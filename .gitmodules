@@ -1,0 +1,9 @@
+[submodule "lib/github"]
+	path = lib/github
+	url = https://github.com/michael/github.git
+[submodule "lib/ace"]
+	path = lib/ace
+	url = https://github.com/ajaxorg/ace-builds.git
+[submodule "lib/bootstrap"]
+	path = lib/bootstrap
+	url = https://github.com/twitter/bootstrap.git
