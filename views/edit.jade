@@ -1,0 +1,24 @@
+extends layout
+
+append head
+  style.
+    .ace_editor { height: 200px; }
+
+block content
+  span.label.label-info.collabbadge working with #{_.without(collaborators, authuser)}
+  div#editor
+
+append scripts
+  script(src='/static/ace/ace.js')
+  script(src='/channel/bcsocket.js')
+  script(src='/share/share.js')
+  script(src='/share/ace.js')
+  script(src='/static/gistalt.js')
+  script.
+    gistalt.readGist(locals.gist, function(origin) {
+      gistalt.setupFork(origin, function(fork) {
+        var container = document.getElementById('editor');
+        container.innerHTML = jade.render('editor', { gist: fork });
+        gistalt.setupEditors(container, origin, fork);
+      });
+    });

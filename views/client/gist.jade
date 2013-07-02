@@ -1,0 +1,8 @@
+h3
+  | #{gist.description}
+  small
+    a(href=gist.html_url) #{gist.id}
+    | , #{_.size(gist.files)} file#{_.size(gist.files) == 1 ? '' : 's'}
+each file in gist.files
+  h3 #{file.filename}
+  pre.pre-small #{file.content}

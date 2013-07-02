@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h2.text-info Rendezvous
+  form.form-horizontal#join
+    .control-group
+      .control-label My joincode
+      .controls
+        h3(style='position:absolute; margin-top:-10px;') #{joiner}
+    .control-group
+      label.control-label(for='joiner') Partner's joincode
+      .controls
+        .input-append
+          input.input-mini(type='text', autofocus=true)#joiner
+          button.btn Join
+    .control-group
+      .controls
+        span.label.label-inverse#alert
+
+append scripts
+  script(src='/static/gistalt.js')
+  script.
+    gistalt.setupRendezvous(document.getElementById('join'),
+                            document.getElementById('joiner'),
+                            document.getElementById('alert'));

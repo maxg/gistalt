@@ -1,0 +1,25 @@
+doctype
+html
+  head
+    block head
+      link(rel='stylesheet', href='/static/bootstrap.css')
+      style.
+        @import url(//fonts.googleapis.com/css?family=Lato);
+        body, input, button, select, textarea {
+          font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        .userbadge { float: right; margin-top: -29px; }
+        .collabbadge { float: right; margin-top: 0px; }
+        .pre-small { font-size: 12px; line-height: 14px; }
+  body
+    div.container
+      h1 Gistalt
+      span.label.userbadge #{locals.authuser}
+      block content
+    block scripts
+      script(src='/static/underscore.js')
+      script(src='/jade/templates.js')
+      script(src='/static/github.js')
+      script.
+        var locals = !{JSON.stringify(locals.clientside || {})};
+        var github = locals.github ? new Github({ token: locals.github.accessToken, auth: 'oauth' }) : undefined;

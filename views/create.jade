@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h2.text-info Create an Exercise
+  form.form-inline(method='post')
+    input(type='hidden', name='pointer', value=pointer)
+    button.btn.btn-large(type='submit') Create exercise with shortcode &ldquo;
+      b #{pointer}
+      | &thinsp;&rdquo;
+  div#gist
+
+append scripts
+  script(src='/static/gistalt.js')
+  script.
+    gistalt.readGist(locals.gist, function(gist) {
+      document.getElementById('gist').innerHTML = jade.render('gist', { gist: gist });
+    });
